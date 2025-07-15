@@ -1,17 +1,9 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Home from './components/Home';
-import AllTasks from './components/AllTasks';
+// src/api.js
+import axios from 'axios';
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/tasks" element={<AllTasks />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
+const API = axios.create({
+  baseURL: process.env.REACT_APP_API_BASE_URL,
+  headers: { 'Content-Type': 'application/json' },
+});
 
-export default App;
+export default API;
