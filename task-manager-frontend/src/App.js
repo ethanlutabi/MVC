@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tasks" element={<TaskList />} />
+
         {/* Add other routes like /tasks/:id/edit if needed */}
       </Routes>
     </Router>
