@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-        'reference' => '814534c39e2aef3d0e69b5a630f8c451186410d9',
+        'pretty_version' => 'dev-MVC_laravel',
+        'version' => 'dev-MVC_laravel',
+        'reference' => '4a16d3dbda6cd21061d0964f38cb18e7c073d745',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '814534c39e2aef3d0e69b5a630f8c451186410d9',
+            'pretty_version' => 'dev-MVC_laravel',
+            'version' => 'dev-MVC_laravel',
+            'reference' => '4a16d3dbda6cd21061d0964f38cb18e7c073d745',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
