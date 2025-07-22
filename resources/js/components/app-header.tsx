@@ -21,6 +21,10 @@ const mainNavItems: NavItem[] = [
         href: '/dashboard',
         icon: LayoutGrid,
     },
+    {
+        title: 'Alltasks',
+        icon: Folder,
+    },
 ];
 
 const rightNavItems: NavItem[] = [

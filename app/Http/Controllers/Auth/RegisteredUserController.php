@@ -44,8 +44,15 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
+
+
+
         Auth::login($user);
 
         return redirect()->intended(route('dashboard', absolute: false));
+        //return response()->json([
+    //'message' => 'User registered',
+    //'token' => $user->createToken('api-token')->plainTextToken,]);
+
     }
 }

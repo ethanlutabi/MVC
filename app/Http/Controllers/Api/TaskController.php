@@ -1,49 +1,54 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Task;
+use App\Http\Resources\Tasks\TaskResource;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class TaskController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        //$tasks = Task::all();
+        return Inertia::render('Tasks/Index', [
+        'tasks' => TaskResource::collection(Task::all())
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'title'        => 'required|string|max:255',
+            'description'  => 'nullable|string',
+        ]);
+
+        $task = Task::create($data);
+        return new TaskResource($task);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Task $task)
     {
-        //
+        return new TaskResource($task);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Task $task)
     {
-        //
+        $data = $request->validate([
+            'title'        => 'sometimes|required|string|max:255',
+            'description'  => 'sometimes|nullable|string',
+            'is_completed' => 'sometimes|boolean',
+        ]);
+
+        $task->update($data);
+        return new TaskResource($task);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Task $task)
     {
-        //
+        $task->delete();
+        return response()->json(['message' => 'Task deleted successfully'], 200);
     }
 }
