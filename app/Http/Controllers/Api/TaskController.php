@@ -12,10 +12,9 @@ class TaskController extends Controller
 {
     public function index()
     {
-        //$tasks = Task::all();
-        return Inertia::render('Tasks/Index', [
-        'tasks' => TaskResource::collection(Task::all())
-        ]);
+    return Inertia::render('Tasks/Index', [
+        'tasks' => TaskResource::collection(Task::where('created_by', auth()->id())->get())
+    ]);
     }
 
     public function store(Request $request)
@@ -25,6 +24,7 @@ class TaskController extends Controller
             'description'  => 'nullable|string',
         ]);
 
+        $data['created_by'] = auth()->id();
         $task = Task::create($data);
         return new TaskResource($task);
     }
@@ -39,7 +39,7 @@ class TaskController extends Controller
         $data = $request->validate([
             'title'        => 'sometimes|required|string|max:255',
             'description'  => 'sometimes|nullable|string',
-            'is_completed' => 'sometimes|boolean',
+            'completed' => 'sometimes|boolean',
         ]);
 
         $task->update($data);

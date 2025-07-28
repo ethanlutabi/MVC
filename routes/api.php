@@ -4,7 +4,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\TaskController; // Add semicolon here
-use App\Http\Controllers\TasksPageController;
 
 
 // Test route
@@ -18,7 +17,7 @@ Route::get('tasks',        [TaskController::class, 'index']);   // List all task
 Route::post('tasks',       [TaskController::class, 'store']);   // Create a new task
 Route::get('tasks/{task}', [TaskController::class, 'show']);    // Get a single task
 Route::put('tasks/{task}', [TaskController::class, 'update']);  // Update a task
-Route::patch('tasks/{task}', [TaskController::class, 'update']); // Optional: PATCH support
+// Route::patch('tasks/{task}', [TaskController::class, 'update']); // Optional: PATCH support
 Route::delete('tasks/{task}', [TaskController::class, 'destroy']); // Delete a task
 
 

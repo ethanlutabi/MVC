@@ -12,7 +12,9 @@ return new class extends Migration {
             $table->string('title');
             $table->text('description')->nullable();
             $table->boolean('completed')->default(false);
+            $table->foreignId('created_by')->constrained('users')->onDelete('cascade'); // Add this line
             $table->timestamps();
+
         });
     }
 
